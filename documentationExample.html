@@ -1,0 +1,139 @@
+﻿<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<![endif]-->
+    <meta charset="UTF-8">
+    <title>Hide Code for Documentation Example</title>
+    
+<!-- ######### Style, can be loaded separately -->
+<style>
+body {
+font-family: "Segoe UI Emoji", "Segoe UI", sans-serif;
+color: #222;
+background-color: #ccc;
+}
+main {
+max-width: 800px;
+margin: 10px auto;
+}
+h1 {
+text-align: center;
+}
+h2 {
+color: white;
+background-color: black;
+margin-left: 10px;
+padding: 2px 10px;
+}
+h3 {
+color: green;
+border: 1px solid black;
+margin-left: 20px;
+padding: 2px 10px;
+}
+p {
+margin: 5px 5px 5px 30px;
+}
+ul {
+margin: 5px 30px;
+}
+code {
+color: #228;
+font-size: 1.3em;
+font-weight: bold;
+}
+footer {
+background-color: #ddd;
+border: 2px outset #888;
+margin: 20px 5px 50px;
+padding: 5px 10px;
+}
+button {
+margin: 0px 10px;
+padding: 2px 3px;
+}
+pre.ActualCode {
+color: white;
+background-color: black;
+margin-left: 30px;
+border: 2px inset #888;
+padding: 5px 10px;
+display: none;
+}
+span.Identifier {
+color: #aaf;
+}
+span.Comment {
+color: #8f8;
+}
+
+</style>
+<!-- ######### JavaScript, can be loaded separately -->
+<script>
+function show(thisFunctionCode) {
+    var codeText = document.getElementById("code_" + thisFunctionCode);
+    var btnText = document.getElementById("btn_" + thisFunctionCode);
+
+    if (codeText.style.display === "block") {
+        btnText.innerHTML = "Show Code";
+        codeText.style.display = "none";
+    } else {
+        btnText.innerHTML = "Hide Code";
+        codeText.style.display = "block";
+    }
+}
+</script>
+</head>
+<body>
+<main>
+<h1>Hide Code for Documentation Example</h1>
+<p>This page shows a setup for code documentation that I have developed. Feel free to use as you wish, no restrictions.</p>
+<p>Using this is as simple as replacing "getSomeInfo" with the name of your function, in all 4 spots (h3 id, button id, show parameter, pre id), and then replacing these descriptions, the pseudocode, and the actual code with your own info. Code Details down there starts out with some pseudocode describing how the function does what it does, and immediately after that is the actual listing of the code, which will generally be longer and therefore hidden.</p>
+<p>I have also been very specific in my CSS, using the headers to define sections visually. I have HTML comments marking the different sections in the page source as well, to aid in maintaining the listing as you look for the function that was changed. Also note that I have used the &lt;code&gt; tag to mark variables wherever they are used (outside the actual code listing), and this helps to differentiate to the reader the times you are talking about the concept as versus when you are talking about the variable (especially useful in modern programming with descriptive variable names). There are also some &lt;span&gt; tags in the actual code listing for doing some mock syntax highlighting, if you feel up to the task.</p>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Main Code -->
+<h2>Main Code</h2>
+<!-- ##################################################### getSomeInfo -->
+<h3 id="getSomeInfo">Public Function getSomeInfo <button id="btn_getSomeInfo" onClick="show('getSomeInfo')">Show Code</button></h3>
+<p><b>Takes:</b> <code>aParameter</code> as string</p>
+<p><b>Returns:</b> String</p>
+<p><b>Local Variables:</b> <code>myTempArray</code> as Variant, <code>myResultString</code> as String</p>
+<p><b>Description:</b>
+<br />This is simply for returning the first and last word in a string, purely as an example. 
+<p><b>Code Details:</b></p>
+<ul>
+<li>Takes <code>aParameter</code> and splits it into array <code>myTempArray</code>.</li>
+<li>Puts just the first and last tokens into <code>myResultString</code>.</li>
+<li>Returns <code>myResultString</code></li>
+</ul>
+<pre class="ActualCode" id="code_getSomeInfo">
+Public Function <span class="Identifier">getSomeInfo</span> (<span class="Identifier">aParameter</span> as String) as String
+    <span class="Comment">'Visual Basic function to return the first and last words of a string</span>
+    Dim <span class="Identifier">myTempArray</span> as Variant, <span class="Identifier">myResultString</span> as String
+    <span class="Identifier">myTempArray = Split(aParameter, " ")</span>
+    <span class="Identifier">myResultString = myTempArray(0) & ", " & myTempArray(UBound(myTempArray)) </span>
+    <span class="Identifier">getSomeInfo = myResultString</span>
+End Function
+</pre>
+<!-- ##################################################### yourFunction -->
+<h3 id="yourFunction">Public Function yourFunction <button id="btn_yourFunction" onClick="show('yourFunction')">Show Code</button></h3>
+<p><b>Takes:</b> nothing</p>
+<p><b>Returns:</b> nothing</p>
+<p><b>Local Variables:</b> none</p>
+<p><b>Description:</b>
+<br />Lorem ipsum, et al.</p>
+<p><b>Code Details:</b></p>
+<ul>
+<li>Get going</li>
+<li>Do it to it</li>
+<li>????</li>
+<li>Profit!</li>
+</ul>
+<pre class="ActualCode" id="code_yourFunction">
+All your base are blong to us.
+</pre>
+<footer>Copyright 2018 Just Joking, this is where you copyright your own code...
+<br />Last updated: 9/16/2018</footer>
+</main>
+</body></html>
